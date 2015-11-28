@@ -1,1 +1,3 @@
-applicazione per territorio italiano
+- verificare la attivazione della estensione php_sqlite3.dll
+- avvio con web server interno: impostare in start.bat i percorsi a php.exe e php.ini
+- formato indirizzo valido solo per territorio italiano

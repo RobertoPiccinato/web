@@ -1,0 +1,72 @@
+<check if="{{ @data->richiesta->isRichiestaPrenotazione() }}">
+  <h2>Nuova prenotazione</h2>
+</check>
+<check if="{{ @data->richiesta->isRichiestaOrdine() }}">
+  <h2>Nuovo ordine</h2>
+</check>
+</div>
+<div class="container">
+  <repeat group="{{ @data->messages }}" value="{{ @m }}">
+    <div class="alert alert-warning" role="alert">{{ @m }}</div>
+  </repeat>
+</div>
+<form method="post" action="{{ @BASEURL }}/richiesta">
+  <input type="hidden" name="tipo" value="{{ @data->richiesta->getTipoRichiesta() }}" />
+  <div class="row row-margin5">
+    <div class="col-md-2 text-right">Cellulare: </div>
+    <div class="col-md-4">
+      <input type="text" class="form-control" name="cell" placeholder="cellulare" 
+            value="{{ @data->richiesta->getCellulare() }}" />
+    </div>
+  </div>
+  <div class="row row-margin5">
+    <div class="col-md-2 text-right">Indirizzo: </div>
+    <div class="col-md-10">
+      <input type="text" class="form-control" name="indvia" placeholder="indirizzo" 
+            value="{{ @data->richiesta->getIndirizzoVia() }}"/>
+    </div>
+  </div>
+  <div class="row row-margin5">
+    <div class="col-md-2 text-right">CAP: </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" name="indcap" placeholder="cap"
+            value="{{ @data->richiesta->getIndirizzoCap() }}"/>
+    </div>
+  </div>
+  <div class="row row-margin5">
+    <div class="col-md-2 text-right">Citt&agrave;: </div>
+    <div class="col-md-4">
+      <input type="text" class="form-control" name="indcitta" placeholder="citta" 
+            value="{{ @data->richiesta->getIndirizzoCitta() }}"/>
+    </div>
+  </div>
+  <div class="row row-margin5">
+    <div class="col-md-2 text-right">Provincia: </div>
+    <div class="col-md-1">
+      <input type="text" class="form-control" name="indprov" 
+            value="{{ @data->richiesta->getIndirizzoProvincia() }}"/>
+    </div>
+  </div>
+  <div class="row row-margin5">
+    <div class="col-md-2 text-right">Tipo di auto: </div>
+    <div class="col-md-4">
+      <select class="form-control" name="tipoauto">
+        <option value="{{ \models\Richiesta::TIPO_AUTO_BERLINA }}" {{ @data->richiesta->isAutoBerlina()?'selected':'' }}>berlina</option>
+        <option value="{{ \models\Richiesta::TIPO_AUTO_MINIVAN }}" {{ @data->richiesta->isAutoMinivan()?'selected':'' }}>minivan</option>
+        <option value="{{ \models\Richiesta::TIPO_AUTO_TRASPORTO_CARROZZINA }}"  {{ @data->richiesta->isAutoTrasportoCarrozzina()?'selected':'' }}>trasporto carrozzina</option>
+      </select>
+    </div>
+  </div>
+  <div class="row row-margin5">
+    <div class="col-md-2 text-right">Note: </div>
+    <div class="col-md-10">
+      <textarea class="form-control" name="note" rows="4">{{ @data->richiesta->getNote()}}</textarea>
+    </div>
+  </div>
+  <div class="row row-margin5">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <button type="submit" class="btn btn-default btn-lg btn-primary">INVIA</button>
+    </div>
+  </div>
+</form>

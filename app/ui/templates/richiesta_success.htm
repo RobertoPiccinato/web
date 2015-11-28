@@ -1,0 +1,42 @@
+<div class="alert alert-success" role="alert">
+  La Vostra richiesta di 
+    <check if="{{ @data->richiesta->isRichiestaPrenotazione() }}">
+      <true>prenotazione</true>
+      <false>ordine</ordine>
+    </check> numero <span class="badge">{{ @data->richiesta->getId() }}</span>  &egrave; stata inviata con successo!
+  Sarete contattati al pi&ugrave; presto da un nostro operatore.
+</div>
+<div class="row row-margin5">
+  <div class="col-md-2 text-right">Cellulare: </div>
+  <div class="col-md-10">{{ @data->richiesta->getCellulare() }}</div>
+</div>
+<div class="row row-margin5">
+  <div class="col-md-2 text-right">Indirizzo: </div>
+  <div class="col-md-10">{{ @data->richiesta->getIndirizzoVia() }}</div>
+</div>
+<div class="row row-margin5">
+  <div class="col-md-2 text-right">CAP: </div>
+  <div class="col-md-10">{{ @data->richiesta->getIndirizzoCap() }}</div>
+</div>
+<div class="row row-margin5">
+  <div class="col-md-2 text-right">Citt&agrave;: </div>
+  <div class="col-md-10">{{ @data->richiesta->getIndirizzoCitta() }}</div>
+</div>
+<div class="row row-margin5">
+  <div class="col-md-2 text-right">Provincia: </div>
+  <div class="col-md-10">{{ @data->richiesta->getIndirizzoProvincia() }}</div>
+</div>
+<div class="row row-margin5">
+  <div class="col-md-2 text-right">Tipo di auto: </div>
+  <div class="col-md-10">
+    <switch expr="{{ @data->richiesta->getTipoAuto() }}">
+      <case value="{{ \models\Richiesta::TIPO_AUTO_BERLINA }}" break="{{ true }}">berlina</case>
+      <case value="{{ \models\Richiesta::TIPO_AUTO_MINIVAN }}" break="{{ true }}">minivan</case>
+      <case value="{{ \models\Richiesta::TIPO_AUTO_TRASPORTO_CARROZZINA }}" break="{{ true }}">trasporto carrozzina</case>
+    </switch>
+  </div>
+</div>
+<div class="row row-margin5">
+  <div class="col-md-2 text-right">Note: </div>
+  <div class="col-md-10">{{ @data->richiesta->getNote()}}</div>
+</div>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="Copyright" content="Mitchell inc.">
+    <meta name="Author" content="RP">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mitchell service</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ @BASEURL }}/{{ @UI }}css/stile.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">MITCHELL SERVICE</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/richiesta?tipo={{ \models\Richiesta::TIPO_RICHIESTA_ORDINE }}">Nuovo ordine</a></li>
+            <li><a href="/richiesta?tipo={{ \models\Richiesta::TIPO_RICHIESTA_PRENOTAZIONE }}">Nuova prenotazione</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <include href="{{ @content }}" />
+    </div>
+  </body>
+</html>
